@@ -3,4 +3,4 @@
 extern pros::Motor grabber;
 
 void moveGrabber();
-void setGrabberBrakes();
+void setGrabberBrake();

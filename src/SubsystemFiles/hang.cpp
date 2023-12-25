@@ -1,12 +1,10 @@
 #include "main.h"
 
 pros::Motor hangMotor(12,MOTOR_GEARSET_18,false);
-pros::Motor ratchetMotor(11,MOTOR_GEARSET_18,false);
-pros::ADIDigitalIn LimitSwitch('H');
+
 
 void setHangBrake(){
         hangMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ratchetMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
 void updateHang(){
@@ -20,8 +18,4 @@ void updateHang(){
                 hangMotor.brake();
         }
         pros::delay(20);        
-}
-
-void updateRatchet(){
- 
 }

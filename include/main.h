@@ -48,6 +48,7 @@
 #include "SubsystemHeaders\grabber.hpp"
 #include "SubsystemHeaders\piston.hpp"
 #include "SubsystemHeaders\hang.hpp"
+#include "SubsystemHeaders\ratchet.hpp"
 
 
 /**

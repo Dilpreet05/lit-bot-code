@@ -56,8 +56,9 @@ void initialize() {
 
   pros::lcd::initialize();
 	pros::lcd::set_text(1, "Spooky Online");
-  setGrabberBrakes();
+  setGrabberBrake();
   setHangBrake();
+  setRatchetBrake();
   
 
 
@@ -101,8 +102,9 @@ void initialize() {
 void disabled() {
   // . . .
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
-  setGrabberBrakes();
+  setGrabberBrake();
   setHangBrake();
+  setRatchetBrake();
 
   
 }
@@ -162,7 +164,6 @@ void competition_initialize() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
-  pros::lcd::clear();
 
 
   while (true) {
