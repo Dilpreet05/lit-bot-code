@@ -2,7 +2,7 @@
 
 pros::Motor grabber(2,pros::E_MOTOR_GEARSET_18,false);
 
-void setGrabberBrakes(){
+void setGrabberBrake(){
     grabber.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
