@@ -245,4 +245,8 @@ void interfered_example() {
 // Make your own autonomous functions here!
 // . . .
 
-void example(){}
+// void example(){}
+
+void skills(){
+  chassis.set_drive_pid(10,DRIVE_SPEED,false);
+}
