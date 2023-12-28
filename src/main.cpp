@@ -4,11 +4,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-20,-19,-18} // ports for left motors
+  {7,8,9} // ports for left motors
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{11,12,13} // ports for right motors
+  ,{-16,-19,-20} // ports for right motors
 
   // IMU Port
   ,21
@@ -59,6 +59,7 @@ void initialize() {
   setGrabberBrake();
   setHangBrake();
   setRatchetBrake();
+  ratchetMotor.set_brake_mode(MOTOR_BRAKE_HOLD);
   
 
 

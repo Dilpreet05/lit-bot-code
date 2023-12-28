@@ -1,6 +1,6 @@
 #include "main.h"
 
-pros::Motor grabber(2,pros::E_MOTOR_GEARSET_18,false);
+pros::Motor grabber(6,pros::E_MOTOR_GEARSET_18,false);
 
 void setGrabberBrake(){
     grabber.set_brake_mode(MOTOR_BRAKE_HOLD);

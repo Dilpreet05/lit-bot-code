@@ -6,8 +6,8 @@ bool waitingOnReleaseR1 = false;
 bool isLeftWingExtended = false;
 bool waitingOnReleaseL1 = false;
 
-pros::ADIDigitalOut WingPistonLeft('A');
-pros::ADIDigitalOut WingPistonRight('B');
+pros::ADIDigitalOut WingPistonLeft('B');
+pros::ADIDigitalOut WingPistonRight('C');
 
 void updatePistons(){
         
