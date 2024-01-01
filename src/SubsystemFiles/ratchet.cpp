@@ -1,6 +1,6 @@
 #include "main.h"
 
-pros::Motor ratchetMotor(12,MOTOR_GEARSET_18,false);
+pros::Motor ratchetMotor(2,MOTOR_GEARSET_18,false);
 pros::ADIDigitalIn LimitSwitch('A');
 
 
