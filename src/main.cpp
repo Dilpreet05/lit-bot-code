@@ -165,7 +165,7 @@ void competition_initialize() {
  */
 void opcontrol() {
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
 
   while (true) {
 
