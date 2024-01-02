@@ -165,13 +165,14 @@ void competition_initialize() {
  */
 void opcontrol() {
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
+  chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
+  chassis.set_tank(89,89);
 
   while (true) {
 
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     moveGrabber();
-    updatePistons();
+    // updatePistons();
     updateHang();
     updateRatchet();
 
