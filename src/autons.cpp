@@ -53,6 +53,16 @@ void skills(){
   chassis.set_drive_pid(10,DRIVE_SPEED,false);
 }
 
+void match(){
+  chassis.reset_pid_targets(); // Resets PID targets to 0
+  chassis.reset_gyro(); // Reset gyro position to 0
+  chassis.reset_drive_sensor(); // Reset drive sensors to 0
+  chassis.set_drive_pid(-35,DRIVE_SPEED,true);
+
+
+
+}
+
 void hangUp(){
   ratchetMotor = -127;
   pros::delay(50);
