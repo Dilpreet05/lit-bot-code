@@ -19,3 +19,11 @@ void two_mogo_constants();
 
 
 void skills();
+void match();
+
+void hangUp();
+void hangDown();
+void hangStop();
+void grabberUp();
+void grabberDown();
+void grabberStop();

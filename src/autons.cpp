@@ -52,3 +52,45 @@ void modified_exit_condition() {
 void skills(){
   chassis.set_drive_pid(10,DRIVE_SPEED,false);
 }
+
+void match(){
+  chassis.reset_pid_targets(); // Resets PID targets to 0
+  chassis.reset_gyro(); // Reset gyro position to 0
+  chassis.reset_drive_sensor(); // Reset drive sensors to 0
+  chassis.set_drive_pid(-35,DRIVE_SPEED,true);
+
+
+
+}
+
+void hangUp(){
+  ratchetMotor = -127;
+  pros::delay(50);
+  hangMotor = 85;
+}
+
+void hangDown(){
+  ratchetMotor = 127;
+  hangMotor = -85;
+}
+
+void hangStop(){
+  hangMotor.brake();
+  ratchetMotor = 0;
+}
+
+void grabberUp(){
+  grabber = -80;
+}
+
+void grabberDown(){
+  grabber = 80;
+}
+
+void grabberStop(){
+  grabber = 0;
+  grabber.brake();
+}
+
+
+
