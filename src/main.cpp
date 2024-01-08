@@ -172,7 +172,6 @@ void opcontrol() {
 
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
     moveGrabber();
-    // updatePistons();
     updateHang();
     updateRatchet();
 
