@@ -5,11 +5,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {7,8,9} // ports for left motors
+  {7,20} // ports for left motors
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{-16,-18,-20} // ports for right motors
+  ,{-6,-18} // ports for right motors
 
   // IMU Port
   ,21
@@ -167,7 +167,7 @@ void competition_initialize() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
-  chassis.set_tank(70,70);
+  // chassis.set_tank(70,70);
 
   while (true) {
 

@@ -80,16 +80,20 @@ void hangStop(){
 }
 
 void grabberUp(){
-  grabber = -80;
+  grabberLeft = -80;
+  grabberRight = -80;
 }
 
 void grabberDown(){
-  grabber = 80;
+  grabberLeft = 80;
+  grabberRight = 80;
 }
 
 void grabberStop(){
-  grabber = 0;
-  grabber.brake();
+  grabberLeft = 0;
+  grabberRight = 0;
+  grabberLeft.brake();
+  grabberRight.brake();
 }
 
 
