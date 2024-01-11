@@ -7,12 +7,12 @@
 /////
 
 
-const int DRIVE_SPEED = 101; // This is 110/127 (around 87% of max speed).  We don't suggest making this 127.
+const int DRIVE_SPEED = 101/2; // This is 110/127 (around 87% of max speed).  We don't suggest making this 127.
                              // If this is 127 and the robot tries to heading correct, it's only correcting by
                              // making one side slower.  When this is 87%, it's correcting by making one side
                              // faster and one side slower, giving better heading correction.
-const int TURN_SPEED  = 90;
-const int SWING_SPEED = 90;
+const int TURN_SPEED  = 90/2;
+const int SWING_SPEED = 90/2;
 
 
 
@@ -54,13 +54,111 @@ void skills(){
 }
 
 void match(){
+  reset();
+  chassis.set_drive_pid(-60,DRIVE_SPEED,true);
+  pros::delay(100);
+  grabberDown();
+  pros::delay(150);
+  grabberStop();
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(-45,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-17,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_swing_pid(ez::RIGHT_SWING,-90,TURN_SPEED);
+  chassis.wait_drive();
+
+  grabberDown();
+  pros::delay(200);
+  grabberStop();
+  
+  reset();
+  chassis.set_drive_pid(-50,DRIVE_SPEED,true);
+  chassis.set_swing_pid(ez::RIGHT_SWING,10,SWING_SPEED);
+  chassis.wait_drive();
+
+  // reset();
+  // chassis.set_turn_pid(-130,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_drive_pid(25,127);
+  // grabberUp();
+  // chassis.wait_drive();
+  // grabberStop();
+
+
+  // reset();
+  // chassis.set_drive_pid(-60,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING, -45,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(-19,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING, -45,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(-17,127);
+  // chassis.wait_drive();
+  // reset();
+
+  // chassis.set_drive_pid(3,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_turn_pid(90,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(40,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_turn_pid(90,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_drive_pid(20,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // grabberDown();
+  // pros::delay(100);
+  // grabberStop();
+
+  // reset();
+
+  // chassis.set_turn_pid(90,TURN_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(-5,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  // grabberUp();
+  // pros::delay(100);
+  // grabberStop();
+
+  // chassis.set_drive_pid(20,127,true);
+  // chassis.wait_drive();
+
+
+
+
+
+}
+
+void reset(){
   chassis.reset_pid_targets(); // Resets PID targets to 0
   chassis.reset_gyro(); // Reset gyro position to 0
   chassis.reset_drive_sensor(); // Reset drive sensors to 0
-  chassis.set_drive_pid(-35,DRIVE_SPEED,true);
-
-
-
 }
 
 void hangUp(){
@@ -80,13 +178,13 @@ void hangStop(){
 }
 
 void grabberUp(){
-  grabberLeft = -80;
-  grabberRight = -80;
+  grabberLeft = -127;
+  grabberRight = -127;
 }
 
 void grabberDown(){
-  grabberLeft = 80;
-  grabberRight = 80;
+  grabberLeft = 127;
+  grabberRight = 127;
 }
 
 void grabberStop(){

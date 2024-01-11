@@ -21,6 +21,7 @@ void two_mogo_constants();
 void skills();
 void match();
 
+void reset();
 void hangUp();
 void hangDown();
 void hangStop();
