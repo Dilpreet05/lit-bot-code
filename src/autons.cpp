@@ -54,73 +54,201 @@ void skills(){
 }
 
 void match(){
+
+  pros::delay(3000);
   reset();
-  chassis.set_drive_pid(-35,DRIVE_SPEED,true);
+  chassis.set_drive_pid(-50,DRIVE_SPEED,true);
   pros::delay(100);
   grabberDown();
   pros::delay(150);
   grabberStop();
   chassis.wait_drive();
 
-  reset();
-  chassis.set_turn_pid(170,TURN_SPEED);
-  chassis.wait_drive();
-
-
-  reset();
-  chassis.set_drive_pid(33,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_swing_pid(ez::LEFT_SWING,45,SWING_SPEED);
-  chassis.wait_drive();
-
-
-  chassis.set_drive_pid(2,DRIVE_SPEED);
-  chassis.wait_drive();
-
-  grabberDown();
-  pros::delay(200);
-  grabberStop();
-
-
-  reset();
-  chassis.set_drive_pid(-30,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  chassis.set_swing_pid(ez::RIGHT_SWING,22.5,SWING_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-25,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_swing_pid(ez::LEFT_SWING, -67.5, SWING_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(32,127,true);
   grabberUp();
   pros::delay(200);
   grabberStop();
+
+  reset();
+  chassis.set_turn_pid(135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10,DRIVE_SPEED,true);
   chassis.wait_drive();
 
   reset();
-  chassis.set_drive_pid(-18,DRIVE_SPEED,true);
+  chassis.set_swing_pid(ez::LEFT_SWING,90,SWING_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(6,DRIVE_SPEED);
   chassis.wait_drive();
 
   reset();
-  chassis.set_swing_pid(ez::RIGHT_SWING, 90, SWING_SPEED);
+  pros::delay(500);
+  grabberDown();
+  pros::delay(500);
+  
+  chassis.set_drive_pid(-10,DRIVE_SPEED);
   chassis.wait_drive();
+  grabberStop();
+
+  reset();
+  chassis.set_turn_pid(-90,TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(500);
+
+  grabberUp();
+  pros::delay(200);
+  grabberStop();
+
+  chassis.set_drive_pid(17,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_swing_pid(ez::RIGHT_SWING,-45,80);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+
+  chassis.set_drive_pid(22,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(45,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(20,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+
+  // chassis.set_drive_pid(-5,DRIVE_SPEED,false);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(5,DRIVE_SPEED*2);
+  // chassis.wait_drive();
+
+  reset();
+
+
+
+
 
   
 
 
+  // reset();
+  // chassis.set_drive_pid(-43,DRIVE_SPEED,true);
+  // pros::delay(100);
+  // grabberDown();
+  // pros::delay(150);
+  // grabberStop();
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_turn_pid(165,TURN_SPEED);
+  // chassis.wait_drive();
+
+
+  // reset();
+  // chassis.set_drive_pid(23,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING,45,SWING_SPEED);
+  // chassis.wait_drive();
+
+
+  // chassis.set_drive_pid(2,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  // grabberDown();
+  // pros::delay(200);
+  // grabberStop();
+
+
+  // reset();
+  // chassis.set_drive_pid(-30,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // chassis.set_swing_pid(ez::RIGHT_SWING,22.5,SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(-25,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING, -67.5, SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(32,DRIVE_SPEED*2,true);
+  // grabberUp();
+  // pros::delay(200);
+  // grabberStop();
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_drive_pid(-18,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::RIGHT_SWING, 112.5, SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(13,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  // grabberDown();
+  // pros::delay(200);
+  // grabberStop();
+
+  // reset();
+  // chassis.set_drive_pid(-10,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING,-112.5,SWING_SPEED);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_drive_pid(23,DRIVE_SPEED*2,true);
+  // pros::delay(100);
+  // grabberUp();
+  // pros::delay(200);
+  // grabberStop();
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_drive_pid(-22,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING,90,SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(25,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::RIGHT_SWING,45,SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(20,DRIVE_SPEED);
+
+  // grabberDown();
+  // pros::delay(100);
+  // grabberStop();
+
+
+
   
-
-
-
 
 }
+
+
+
+
 
 void reset(){
   chassis.reset_pid_targets(); // Resets PID targets to 0
