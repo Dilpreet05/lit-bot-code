@@ -29,6 +29,8 @@ void updateHang(){
                 // ratchetMotor = 0;
         }else if(LimitSwitch.get_value() == 1 && master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == 1){
                 ratchetMotor = -127;
+        }else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)==1){
+                hangMotor = -50;
         }else{
                 ratchetMotor = 0;
                 ratchetMotor.brake();
