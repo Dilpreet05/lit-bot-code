@@ -79,7 +79,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("match", match),
+    // Auton("match", match),
     Auton("skills", skills),
     // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
     // Auton("Example Turn\n\nTurn 3 times.", turn_example),
@@ -168,10 +168,20 @@ void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
   // chassis.set_tank(70,70);
+  bool isFlipped = false;
 
   while (true) {
 
-    chassis.arcade_standard(ez::SPLIT); // Standard split arcade
+
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)==1){
+      isFlipped = !isFlipped;
+    }
+
+    if(!isFlipped){
+      chassis.arcade_standard(ez::SPLIT); // Standard split arcade
+    }else{
+      chassis.arcade_flipped(ez::SPLIT);
+    }
     moveGrabber();
     updateHang();
     updateRatchet();

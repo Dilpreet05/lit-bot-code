@@ -20,6 +20,8 @@ void two_mogo_constants();
 
 void skills();
 void match();
+void skillsCycle();
+void pushOver();
 
 void reset();
 void hangUp();
