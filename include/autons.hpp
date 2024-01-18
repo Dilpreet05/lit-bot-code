@@ -4,24 +4,17 @@
 
 extern Drive chassis;
 extern Drive r;
+extern int skillsDelay;
 
-void drive_example();
-void turn_example();
-void drive_and_turn();
-void wait_until_change_speed();
-void swing_example();
-void combining_movements();
-void interfered_example();
 
 void default_constants();
-void one_mogo_constants();
-void two_mogo_constants();
 
 
 void skills();
 void match();
 void skillsCycle();
 void pushOver();
+void unPushOver();
 
 void reset();
 void hangUp();
