@@ -63,21 +63,24 @@ void skills(){
   chassis.wait_drive();
 
   reset();
-  chassis.set_turn_pid(180,TURN_SPEED);
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+  // reset();
+  // chassis.set_swing_pid(ez::LEFT_SWING,45,SWING_SPEED);
+  // chassis.wait_drive();
+
+  // chassis.set_drive_pid(11,DRIVE_SPEED,true);
+  // chassis.wait_drive();
+
+  chassis.set_drive_pid(15,DRIVE_SPEED);
   chassis.wait_drive();
 
   reset();
-  chassis.set_swing_pid(ez::LEFT_SWING,45,SWING_SPEED);
+  chassis.set_turn_pid(-90,TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(11,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_turn_pid(-93,TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(3.5,DRIVE_SPEED);
+  chassis.set_drive_pid(6,DRIVE_SPEED);
   chassis.wait_drive();
 
 
@@ -93,9 +96,9 @@ void skills(){
     pros::delay(skillsDelay);
     skillsCycle();
     if(k==3){
-      chassis.set_drive_pid(3,DRIVE_SPEED);
-      chassis.wait_drive();
       reset();
+      chassis.set_swing_pid(ez::RIGHT_SWING,-4,DRIVE_SPEED);
+      chassis.wait_drive();
     }
   }
 
@@ -109,7 +112,7 @@ void skills(){
   chassis.wait_drive();
   
   reset();
-  chassis.set_drive_pid(-4,DRIVE_SPEED);
+  chassis.set_drive_pid(-5,DRIVE_SPEED);
   chassis.wait_drive();
 
   reset();
@@ -125,14 +128,89 @@ void skills(){
 
   reset();
   // chassis.set_turn_pid(45,TURN_SPEED);
+  chassis.set_swing_pid(ez::LEFT_SWING,45,SWING_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_drive_pid(39,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  // unPushOver();
+
+
+  chassis.set_drive_pid(-38,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_swing_pid(ez::LEFT_SWING,-42,SWING_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-9,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(5,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  
+  grabberDown();
+  pros::delay(250);
+  grabberStop();
+  
+  
+
+  for(int k = 0; k < 5; k++){
+    pros::delay(skillsDelay);
+    skillsCycle();
+    // if(k==3){
+    //   reset();
+    //   chassis.set_swing_pid(ez::RIGHT_SWING,-4,DRIVE_SPEED);
+    //   chassis.wait_drive();
+    // }
+  }
+
+  // pushOver();
+
+
+  pros::delay(skillsDelay);
+
+  reset();
+
+  chassis.set_drive_pid(7,DRIVE_SPEED);
+  chassis.wait_drive();
+  
+  reset();
+  chassis.set_swing_pid(ez::RIGHT_SWING,-4,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_drive_pid(-5,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(90,TURN_SPEED);
+  chassis.wait_drive();
+
+  grabberUp();
+  pros::delay(500);
+  grabberStop();
+
+  chassis.set_drive_pid(9,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  // chassis.set_turn_pid(45,TURN_SPEED);
   chassis.set_swing_pid(ez::LEFT_SWING,43,SWING_SPEED);
   chassis.wait_drive();
   
   chassis.set_drive_pid(41,DRIVE_SPEED,true);
   chassis.wait_drive();
 
-  // unPushOver();
 
+  // // unPushOver();
+
+  reset();  
 
   chassis.set_drive_pid(-39,DRIVE_SPEED,true);
   chassis.wait_drive();
@@ -147,99 +225,62 @@ void skills(){
   chassis.set_turn_pid(-135,TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-1,DRIVE_SPEED);
+
+  chassis.set_drive_pid(4,DRIVE_SPEED);
   chassis.wait_drive();
 
-  
   grabberDown();
   pros::delay(250);
   grabberStop();
-  
-  
-
-  // for(int k = 0; k < 5; k++){
-  //   pros::delay(skillsDelay);
-  //   skillsCycle();
-  //   // if(k%2!=0){
-  //   //   chassis.set_drive_pid(6,DRIVE_SPEED);
-  //   //   chassis.wait_drive();
-  //   //   reset();
-  //   // }
-  // }
-
-  // // pushOver();
 
 
-  // pros::delay(skillsDelay);
-
-  // reset();
-
-  // chassis.set_drive_pid(7,DRIVE_SPEED);
-  // chassis.wait_drive();
-  
-  // reset();
-  // chassis.set_drive_pid(-4,DRIVE_SPEED);
-  // chassis.wait_drive();
-
-  // reset();
-  // chassis.set_turn_pid(90,TURN_SPEED);
-  // chassis.wait_drive();
-
-  // grabberUp();
-  // pros::delay(500);
-  // grabberStop();
-
-  // chassis.set_drive_pid(13,DRIVE_SPEED);
-  // chassis.wait_drive();
-
-  // reset();
-  // // chassis.set_turn_pid(45,TURN_SPEED);
-  // chassis.set_swing_pid(ez::LEFT_SWING,43,SWING_SPEED);
-  // chassis.wait_drive();
-  
-  // chassis.set_drive_pid(41,DRIVE_SPEED,true);
-  // chassis.wait_drive();
-
-
-  // // // unPushOver();
-
-  // reset();  
-
-  // chassis.set_drive_pid(-39,DRIVE_SPEED,true);
-  // chassis.wait_drive();
-
-  // reset();
-  // chassis.set_swing_pid(ez::LEFT_SWING,-42,SWING_SPEED);
-  // chassis.wait_drive();
-
-  // chassis.set_drive_pid(-13,DRIVE_SPEED,true);
-  // chassis.wait_drive();
-
-  // chassis.set_turn_pid(-135,TURN_SPEED);
-  // chassis.wait_drive();
-
-  // // chassis.set_drive_pid(2,DRIVE_SPEED);
-  // // chassis.wait_drive();
-
-  // grabberDown();
-  // pros::delay(250);
-  // grabberStop();
-
-
-  // for(int k = 0; k < 5; k++){
-  //   pros::delay(skillsDelay);
-  //   skillsCycle();
-  //   // if(k%2!=0){
-  //   //   chassis.set_drive_pid(6,DRIVE_SPEED);
-  //   //   chassis.wait_drive();
-  //   //   reset();
-  //   // }
-  // }
+  for(int k = 0; k < 5; k++){
+    pros::delay(skillsDelay);
+    skillsCycle();
+    // if(k%2!=0){
+    //   chassis.set_drive_pid(6,DRIVE_SPEED);
+    //   chassis.wait_drive();
+    //   reset();
+    // }
+  }
 
   // pushOver();
 
-  // chassis.set_drive_pid(-30,DRIVE_SPEED);
-  // chassis.wait_drive();
+  pros::delay(skillsDelay);
+
+  reset();
+
+  chassis.set_drive_pid(6,DRIVE_SPEED);
+  chassis.wait_drive();
+  
+  reset();
+  chassis.set_drive_pid(-3,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(90,TURN_SPEED);
+  chassis.wait_drive();
+
+  grabberUp();
+  pros::delay(500);
+  grabberStop();
+
+  chassis.set_drive_pid(12,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  // chassis.set_turn_pid(45,TURN_SPEED);
+  chassis.set_swing_pid(ez::LEFT_SWING,44,SWING_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_drive_pid(41,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+
+
+
+  chassis.set_drive_pid(-30,DRIVE_SPEED);
+  chassis.wait_drive();
 
 }
 
