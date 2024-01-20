@@ -2,8 +2,6 @@
 
 #include "EZ-Template/drive/drive.hpp"
 
-extern Drive chassis;
-extern Drive r;
 extern int skillsDelay;
 
 
