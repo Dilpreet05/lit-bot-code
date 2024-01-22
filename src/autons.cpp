@@ -21,13 +21,13 @@ const int SWING_SPEED = 90/2;
 ///
 
 // It's best practice to tune constants when the robot is empty and with heavier game objects, or with lifts up vs down.
-// If the objects are light or the cog doesn't change much, then there isn't a concern here.
+// If the objects are ez or the cog doesn't change much, then there isn't a concern here.
 
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
   chassis.set_slew_distance(7, 7);
-  chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
-  chassis.set_pid_constants(&chassis.forward_drivePID, 0.45, 0, 5, 0);
+  chassis.set_pid_constants(&chassis.headingPID, 3, 0, 10, 0);
+  chassis.set_pid_constants(&chassis.forward_drivePID, 0.30, 0, 6, 0);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.45, 0, 5, 0);
   chassis.set_pid_constants(&chassis.turnPID, 5, 0.003, 35, 15);
   chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
@@ -41,6 +41,39 @@ void modified_exit_condition() {
   chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
 }
 
+
+void drive_example(){
+  // The first parameter is target inches
+  // The second parameter is max speed the robot will drive at
+  // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
+  // for slew, only enable it when the drive distance is greater then the slew distance + a few inches
+
+
+  chassis.set_drive_pid(24, DRIVE_SPEED, true);
+  chassis.wait_drive();
+
+  // chassis.set_drive_pid(-12, DRIVE_SPEED);
+  // chassis.wait_drive();
+  pros::delay(1000);
+
+  chassis.set_drive_pid(-24, DRIVE_SPEED);
+  chassis.wait_drive();
+}
+
+void turn_example() {
+  // The first parameter is target degrees
+  // The second parameter is max speed the robot will drive at
+
+
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+}
 
 
 // . . .
