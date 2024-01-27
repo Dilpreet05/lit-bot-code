@@ -26,12 +26,13 @@ const int SWING_SPEED = 90/2;
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
   chassis.set_slew_distance(7, 7);
-  chassis.set_pid_constants(&chassis.headingPID, 5, 0, 15, 0);
-  chassis.set_pid_constants(&chassis.forward_drivePID, 0.25, 0, 3, 0);
-  chassis.set_pid_constants(&chassis.backward_drivePID, 0.3, 0, 2.85, 0);
-  chassis.set_pid_constants(&chassis.turnPID, 5, 0.003, 35, 15);
-  chassis.set_pid_constants(&chassis.swingPID, 7, 0, 45, 0);
+  chassis.set_pid_constants(&chassis.headingPID, , 0, 11, 0);
+  chassis.set_pid_constants(&chassis.forward_drivePID, 0.50, 0.25, 5.25, 15);
+  chassis.set_pid_constants(&chassis.backward_drivePID, 0.5, 0.0, 4.5, 15);
+  chassis.set_pid_constants(&chassis.turnPID, 2.5, 0.003, 18, 15);
+  chassis.set_pid_constants(&chassis.swingPID, 3, 0, 35,0);
 }
+
 
 
 
@@ -47,34 +48,70 @@ void drive_example(){
   // The second parameter is max speed the robot will drive at
   // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
   // for slew, only enable it when the drive distance is greater then the slew distance + a few inches
+  double valRight = 0.0;
+  double valLeft = 0.0;
+  pros::lcd::clear();
 
 
-  chassis.set_drive_pid(24, DRIVE_SPEED, true);
+  chassis.set_drive_pid(12, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-12, DRIVE_SPEED);
-  chassis.wait_drive();
+
+  valRight = chassis.get_gyro();
+  // valLeft = chassis.left_sensor()/chassis.get_tick_per_inch();
+
+  pros::lcd::print(0,"value forward Right: %lf", valRight);
+  // pros::lcd::print(3,"value forward Left: %lf", valLeft);
+
+
+  // printf("value forward Right: %lf", valRight);
+  // printf("value forward Left: %lf", valLeft);
+
 
   pros::delay(1000);
 
   chassis.set_drive_pid(-12, DRIVE_SPEED);
   chassis.wait_drive();
+
+  valRight = chassis.get_gyro();
+  // valLeft = chassis.left_sensor()/chassis.get_tick_per_inch();  
+
+  pros::lcd::print(5,"value Back Right: %lf", valRight);
+  // pros::lcd::print(7,"value Back Left: %lf", valLeft);
+
+  // printf("value forward Right: %lf", valRight);
+  // printf("value forward Left: %lf", valLeft);
+
+
+  // chassis.set_drive_pid(-12, DRIVE_SPEED);
+  // chassis.wait_drive();
 }
 
 void turn_example() {
   // The first parameter is target degrees
   // The second parameter is max speed the robot will drive at
 
+  
+  // chassis.set_turn_pid(180, TURN_SPEED);
+  // chassis.wait_drive();
 
-  chassis.set_turn_pid(90, TURN_SPEED);
+  // // pros::delay(1000);
+
+
+  // // pros::delay(1000);
+
+  // reset();
+  // chassis.set_turn_pid(-180, TURN_SPEED);
+  // chassis.wait_drive();
+
+  chassis.set_swing_pid(ez::LEFT_SWING,90,SWING_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
+  reset();
+  chassis.set_swing_pid(ez::LEFT_SWING,-90,SWING_SPEED);
   chassis.wait_drive();
 }
+
 
 
 // . . .
