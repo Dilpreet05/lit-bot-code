@@ -26,11 +26,11 @@ const int SWING_SPEED = 90/2;
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
   chassis.set_slew_distance(7, 7);
-  chassis.set_pid_constants(&chassis.headingPID, , 0, 11, 0);
-  chassis.set_pid_constants(&chassis.forward_drivePID, 0.50, 0.25, 5.25, 15);
+  chassis.set_pid_constants(&chassis.headingPID, 10, 0, 18, 0);
+  chassis.set_pid_constants(&chassis.forward_drivePID, 0.50, 0.235, 5.25, 15);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.5, 0.0, 4.5, 15);
-  chassis.set_pid_constants(&chassis.turnPID, 2.5, 0.003, 18, 15);
-  chassis.set_pid_constants(&chassis.swingPID, 3, 0, 35,0);
+  chassis.set_pid_constants(&chassis.turnPID, 3.5, 0.003, 27, 15);
+  chassis.set_pid_constants(&chassis.swingPID, 4.5, 0, 33,0);
 }
 
 
@@ -52,15 +52,20 @@ void drive_example(){
   double valLeft = 0.0;
   pros::lcd::clear();
 
+  valRight = chassis.get_gyro();
 
-  chassis.set_drive_pid(12, DRIVE_SPEED);
+
+  pros::lcd::print(1,"value forward Right: %lf", valRight);
+
+
+  chassis.set_swing_pid(ez::LEFT_SWING, 90, SWING_SPEED);
   chassis.wait_drive();
 
 
   valRight = chassis.get_gyro();
   // valLeft = chassis.left_sensor()/chassis.get_tick_per_inch();
 
-  pros::lcd::print(0,"value forward Right: %lf", valRight);
+  pros::lcd::print(3,"value forward Right: %lf", valRight);
   // pros::lcd::print(3,"value forward Left: %lf", valLeft);
 
 
@@ -70,7 +75,7 @@ void drive_example(){
 
   pros::delay(1000);
 
-  chassis.set_drive_pid(-12, DRIVE_SPEED);
+  chassis.set_swing_pid(ez::LEFT_SWING,0,SWING_SPEED);
   chassis.wait_drive();
 
   valRight = chassis.get_gyro();
