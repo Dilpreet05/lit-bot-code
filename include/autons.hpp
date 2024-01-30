@@ -12,8 +12,11 @@ void turn_example();
 
 
 void skills();
+void skillsNew();
 void match();
+void matchNew();
 void skillsCycle();
+void skillsCycleNew();
 void pushOver();
 void unPushOver();
 

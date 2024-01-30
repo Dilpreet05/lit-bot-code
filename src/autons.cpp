@@ -127,6 +127,63 @@ void turn_example() {
 
 int skillsDelay = 600;
 
+void skillsNew(){
+  reset();
+  chassis.set_drive_pid(10,127);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-6,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(15,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-225,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(4,DRIVE_SPEED);
+  grabberDown();
+  hangUp();
+  pros::delay(200);
+  chassis.wait_drive();
+
+  for(int k = 0; k < 5; k++){
+    pros::delay(skillsDelay);
+    skillsCycleNew();
+    // if(k==3){
+    //   reset();
+    //   chassis.set_swing_pid(ez::RIGHT_SWING,-4,DRIVE_SPEED);
+    //   chassis.wait_drive();
+    // }
+  }
+
+  // chassis.reset_gyro();
+  // chassis.set_angle(-225);
+
+  chassis.set_turn_pid(135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(12,DRIVE_SPEED);
+  grabberUp();
+  pros::delay(250);
+  grabberStop();
+  chassis.wait_drive();
+  
+  chassis.set_turn_pid(90,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(35,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+
+
+
+
+}
+
 void skills(){
 
   
@@ -365,6 +422,311 @@ void skills(){
 
 
 
+
+
+
+
+
+// *****************
+
+void matchNew(){
+
+  pros::delay(2500);
+  chassis.set_drive_pid(-50,DRIVE_SPEED,true);
+  pros::delay(100);
+  grabberDown();
+  pros::delay(150);
+  grabberStop();
+  chassis.wait_drive();
+
+  grabberUp();
+  pros::delay(200);
+  grabberStop();
+
+  chassis.set_turn_pid(135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_swing_pid(ez::LEFT_SWING,225,SWING_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(225,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(7,DRIVE_SPEED);
+  chassis.wait_drive();
+  
+
+  pros::delay(500);
+  grabberDown();
+  pros::delay(500);
+  
+  chassis.set_drive_pid(-55,DRIVE_SPEED,true);
+  hangUp();
+
+
+  chassis.wait_drive();
+  grabberStop();
+
+  chassis.set_swing_pid(ez::LEFT_SWING,180,SWING_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-5,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(750);
+  grabberUp();
+  pros::delay(200);
+  grabberStop();
+
+  chassis.set_drive_pid(32,101,true);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-29,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-45,TURN_SPEED);
+  chassis.wait_drive();
+  grabberDown();
+  pros::delay(250);
+
+
+  chassis.set_turn_pid(180,TURN_SPEED);
+  chassis.wait_drive();
+  grabberStop();
+
+
+  chassis.set_drive_pid(28,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-29,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(300,TURN_SPEED);
+  chassis.wait_drive();
+  grabberDown();
+  pros::delay(250);
+  
+
+  chassis.set_turn_pid(180,TURN_SPEED);
+  chassis.wait_drive();
+  grabberStop();
+
+  pros::delay(500); // lets the triball settle in the grabber after we turn, makes scoring more consistant
+
+  chassis.set_drive_pid(27,101,true);
+  grabberUp();
+
+  chassis.wait_drive();
+  grabberStop();
+
+  chassis.set_drive_pid(-10,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(250);
+
+  chassis.set_drive_pid(14,101);
+  chassis.wait_drive();
+
+
+  chassis.set_drive_pid(-4,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(265,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(48,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(0,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(33,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  // chassis.set_mode(DISABLE);  
+
+
+
+
+
+
+}
+
+
+
+
+
+void reset(){
+  chassis.reset_pid_targets(); // Resets PID targets to 0
+  chassis.reset_gyro(); // Reset gyro position to 0
+  chassis.reset_drive_sensor(); // Reset drive sensors to 0
+}
+
+void hangUp(){
+  ratchetMotor = -127;
+  pros::delay(50);
+  hangMotor = 85;
+  pros::delay(1500);
+  hangStop();
+}
+
+void hangDown(){
+  ratchetMotor = 127;
+  hangMotor = -85;
+}
+
+void hangStop(){
+  hangMotor.brake();
+  ratchetMotor = 0;
+}
+
+void grabberUp(){
+  grabberLeft = -127;
+  grabberRight = -127;
+}
+
+void grabberDown(){
+  grabberLeft = 127;
+  grabberRight = 127;
+}
+
+void grabberStop(){
+  grabberLeft = 0;
+  grabberRight = 0;
+
+}
+
+void skillsCycleNew(){
+
+  chassis.set_turn_pid(180,TURN_SPEED*1.5);
+  chassis.wait_drive();
+
+  pros::delay(50);
+
+  chassis.set_turn_pid(-225,TURN_SPEED);
+  chassis.wait_drive();
+
+}
+
+
+void skillsCycle(){
+
+
+
+  reset();
+  chassis.set_turn_pid(45,TURN_SPEED*1.5);
+  chassis.wait_drive();
+
+  pros::delay(100);
+
+  reset();
+  chassis.set_turn_pid(-45,TURN_SPEED);
+  chassis.wait_drive();
+
+}
+
+
+
+/*
+void match(){
+
+  pros::delay(3000);
+  reset();
+  chassis.set_drive_pid(-50,DRIVE_SPEED,true);
+  pros::delay(100);
+  grabberDown();
+  pros::delay(150);
+  grabberStop();
+  chassis.wait_drive();
+
+  grabberUp();
+  pros::delay(200);
+  grabberStop();
+
+  reset();
+  chassis.set_turn_pid(135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(10,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_swing_pid(ez::LEFT_SWING,90,SWING_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(360,TURN_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_drive_pid(6,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  pros::delay(500);
+  grabberDown();
+  pros::delay(500);
+  
+  chassis.set_drive_pid(-55,DRIVE_SPEED);
+  chassis.wait_drive();
+  grabberStop();
+
+  reset();
+  chassis.set_swing_pid(ez::LEFT_SWING,-48,SWING_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-7,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(750);
+  grabberUp();
+  pros::delay(200);
+  grabberStop();
+
+  chassis.set_drive_pid(32,101,true);
+  chassis.wait_drive();
+
+
+  for(int k = 0; k < 2; k++){
+    chassis.set_drive_pid(-10,DRIVE_SPEED);
+    chassis.wait_drive();
+
+    chassis.set_drive_pid(12,DRIVE_SPEED);
+    chassis.wait_drive();
+  }
+
+
+  reset();
+  chassis.set_drive_pid(-4,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(90,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(53,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  reset();
+  chassis.set_turn_pid(90,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(34,DRIVE_SPEED);
+  chassis.wait_drive();
+
+
+  
+
+}
+
+*/
+
+
+/*
+
 void unPushOver(){
   reset();  
 
@@ -424,158 +786,4 @@ void pushOver(){
   chassis.wait_drive();
 }
 
-
-void skillsCycle(){
-
-
-
-  reset();
-  chassis.set_turn_pid(45,TURN_SPEED*1.5);
-  chassis.wait_drive();
-
-  pros::delay(100);
-
-  reset();
-  chassis.set_turn_pid(-45,TURN_SPEED);
-  chassis.wait_drive();
-
-}
-
-
-// *****************
-
-void match(){
-
-  pros::delay(3000);
-  reset();
-  chassis.set_drive_pid(-50,DRIVE_SPEED,true);
-  pros::delay(100);
-  grabberDown();
-  pros::delay(150);
-  grabberStop();
-  chassis.wait_drive();
-
-  grabberUp();
-  pros::delay(200);
-  grabberStop();
-
-  reset();
-  chassis.set_turn_pid(135,TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(10,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_swing_pid(ez::LEFT_SWING,90,SWING_SPEED);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_turn_pid(360,TURN_SPEED);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_drive_pid(6,DRIVE_SPEED);
-  chassis.wait_drive();
-
-  reset();
-  pros::delay(500);
-  grabberDown();
-  pros::delay(500);
-  
-  chassis.set_drive_pid(-55,DRIVE_SPEED);
-  chassis.wait_drive();
-  grabberStop();
-
-  reset();
-  chassis.set_swing_pid(ez::LEFT_SWING,-48,SWING_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-7,DRIVE_SPEED);
-  chassis.wait_drive();
-
-  pros::delay(skillsDelay);
-  grabberUp();
-  pros::delay(200);
-  grabberStop();
-
-  chassis.set_drive_pid(32,101,true);
-  chassis.wait_drive();
-
-
-  for(int k = 0; k < 2; k++){
-    chassis.set_drive_pid(-10,DRIVE_SPEED);
-    chassis.wait_drive();
-
-    chassis.set_drive_pid(12,DRIVE_SPEED);
-    chassis.wait_drive();
-  }
-
-
-  reset();
-  chassis.set_drive_pid(-3,DRIVE_SPEED);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_turn_pid(90,TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(53,DRIVE_SPEED,true);
-  chassis.wait_drive();
-
-  reset();
-  chassis.set_turn_pid(90,TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(34,DRIVE_SPEED);
-  chassis.wait_drive();
-
-
-  
-
-}
-
-
-
-
-
-void reset(){
-  chassis.reset_pid_targets(); // Resets PID targets to 0
-  chassis.reset_gyro(); // Reset gyro position to 0
-  chassis.reset_drive_sensor(); // Reset drive sensors to 0
-}
-
-void hangUp(){
-  ratchetMotor = -127;
-  pros::delay(50);
-  hangMotor = 85;
-}
-
-void hangDown(){
-  ratchetMotor = 127;
-  hangMotor = -85;
-}
-
-void hangStop(){
-  hangMotor.brake();
-  ratchetMotor = 0;
-}
-
-void grabberUp(){
-  grabberLeft = -127;
-  grabberRight = -127;
-}
-
-void grabberDown(){
-  grabberLeft = 127;
-  grabberRight = 127;
-}
-
-void grabberStop(){
-  grabberLeft = 0;
-  grabberRight = 0;
-
-}
-
-
-
+*/

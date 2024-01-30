@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "PID TUNING",
+    "project_name": "NEW AUTONS",
     "target": "v5",
     "templates": {
       "EZ-Template": {
