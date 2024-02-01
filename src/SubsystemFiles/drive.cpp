@@ -34,7 +34,7 @@ Drive chassis (
 
 
 void updateDrive(){
-        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)==1){
+        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)==1){
                 isFlipped = !isFlipped;
         }
 
