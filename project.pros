@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "NEW AUTONS",
+    "project_name": "MATCH NEW AUTONS ",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -332,7 +332,7 @@
     },
     "upload_options": {
       "description": "Code for Little Bot, Over Under VexU",
-      "slot": 3,
+      "slot": 1,
       "icon": "pizza",
       "after": "run"
     }
