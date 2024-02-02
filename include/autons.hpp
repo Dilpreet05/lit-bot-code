@@ -20,6 +20,9 @@ void skillsCycleNew();
 void pushOver();
 void unPushOver();
 
+void skillsPostFix();
+void cyclePostFix();
+
 void reset();
 void hangUp();
 void hangDown();

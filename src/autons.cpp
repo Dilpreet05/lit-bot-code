@@ -26,7 +26,7 @@ const int SWING_SPEED = 90/2;
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
   chassis.set_slew_distance(7, 7);
-  chassis.set_pid_constants(&chassis.headingPID, 10, 0, 50, 0);
+  chassis.set_pid_constants(&chassis.headingPID, 10, 0, 18, 0);
   chassis.set_pid_constants(&chassis.forward_drivePID, 0.50, 0.235, 5.25, 15);
   chassis.set_pid_constants(&chassis.backward_drivePID, 0.5, 0.0, 4.5, 15);
   chassis.set_pid_constants(&chassis.turnPID, 3.5, 0.003, 27, 15);
@@ -126,6 +126,124 @@ void turn_example() {
 // void example(){}
 
 int skillsDelay = 600;
+
+void skillsPostFix(){
+  reset();
+  chassis.set_drive_pid(10,127,false,true);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-6,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(15,DRIVE_SPEED,true,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-225,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(7,DRIVE_SPEED);
+  chassis.wait_drive();
+
+
+  for(int k = 0; k < 2; k++){
+    cyclePostFix();
+    pros::delay(250);
+  }
+
+
+
+
+}
+
+void cyclePostFix(){
+
+  grabberDown();
+  pros::delay(200);
+
+  chassis.set_drive_pid(-12,DRIVE_SPEED);
+  chassis.wait_drive();
+  grabberStop();
+
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(16,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-90,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(82,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-45,TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(500);
+  grabberUp();
+  pros::delay(350);
+  grabberStop();
+
+  chassis.set_drive_pid(27,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(0,TURN_SPEED);
+  chassis.wait_drive();
+
+  grabberUp();
+  pros::delay(350);
+  grabberStop();
+
+  chassis.set_drive_pid(7,127);
+  chassis.wait_drive();
+
+  // chassis.set_drive_pid(-10,DRIVE_SPEED);
+  // chassis.wait_drive();
+
+  chassis.set_drive_pid(-7,DRIVE_SPEED);
+  chassis.wait_drive();
+  
+  chassis.set_drive_pid(7,127);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-7,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-45,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-27,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-90,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-82,DRIVE_SPEED,true);
+  chassis.wait_drive();
+
+  grabberUp();
+  
+
+  chassis.set_turn_pid(-135,TURN_SPEED);
+  chassis.wait_drive();
+  grabberStop();
+
+  chassis.set_drive_pid(-16,DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid(-225,TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(12,DRIVE_SPEED);
+  chassis.wait_drive();
+
+
+
+}
+
+
 
 void skillsNew(){
   reset();
