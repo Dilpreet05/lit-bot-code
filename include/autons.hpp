@@ -24,8 +24,9 @@ void skillsPostFix();
 void cyclePostFix();
 
 void reset();
-void hangUp();
-void hangDown();
+void resetHangMotor();
+void hangUp(int units, int velocity);
+void hangDown(int units, int velocity);
 void hangStop();
 void grabberUp();
 void grabberDown();

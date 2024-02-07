@@ -129,6 +129,7 @@ int skillsDelay = 600;
 
 void skillsPostFix(){
   reset();
+
   chassis.set_drive_pid(10,127,false,true);
   chassis.wait_drive();
 
@@ -148,7 +149,7 @@ void skillsPostFix(){
   chassis.wait_drive();
 
 
-  for(int k = 0; k < 6; k++){
+  for(int k = 0; k < 1; k++){
     cyclePostFix();
     pros::delay(250);
   }
@@ -168,21 +169,19 @@ void skillsPostFix(){
   chassis.wait_drive();
 
   chassis.set_turn_pid(90,TURN_SPEED);
-  ratchetMotor = 127;
-  pros::delay(250);
-  hangMotor = 80;
+  
+
+  resetHangMotor();
+  hangUp(3600, 100);
 
   chassis.wait_drive();
 
   chassis.set_drive_pid(40,DRIVE_SPEED,true);
   chassis.wait_drive();  
 
-    
+  resetHangMotor();
+  hangUp(3400, 100);
 
-  hangMotor = -127;
-  ratchetMotor = -127;
-
-  pros::delay(1800);
   ratchetMotor.set_brake_mode(MOTOR_BRAKE_COAST);
   hangMotor.brake();
   ratchetMotor.brake();
@@ -527,8 +526,8 @@ void skillsCycleNew(){
 
 }
 
-
 /*
+
 void skills(){
 
   
@@ -761,8 +760,9 @@ void skills(){
   chassis.wait_drive();
 
 }
-
 */
+
+
 
 
 
@@ -897,7 +897,7 @@ void matchNew(){
   chassis.set_turn_pid(0,TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(34.5,DRIVE_SPEED);
+  chassis.set_drive_pid(36,DRIVE_SPEED);
   chassis.wait_drive();
 
   
@@ -920,17 +920,30 @@ void reset(){
   chassis.reset_drive_sensor(); // Reset drive sensors to 0
 }
 
-void hangUp(){
+void resetHangMotor(){
+  hangMotor.tare_position();
+}
+
+void hangUp(int units, int velocity){
   ratchetMotor = 127;
   pros::delay(50);
-  hangMotor = 85;
-  pros::delay(1500);
+  hangMotor.move_absolute(units, velocity);
+  while (!((hangMotor.get_position() < (units+5)) && (hangMotor.get_position() > (units-5)))) {
+            
+            pros::delay(5);
+        }
   hangStop();
 }
 
-void hangDown(){
+void hangDown(int units, int velocity){
   ratchetMotor = -127;
-  hangMotor = -85;
+  pros::delay(50);
+  hangMotor.move_absolute(-units, -velocity);
+  while (!((hangMotor.get_position() > -(units+5)) && (hangMotor.get_position() < -(units-5)))) {
+           
+            pros::delay(5);
+        }
+  hangStop();
 }
 
 void hangStop(){
